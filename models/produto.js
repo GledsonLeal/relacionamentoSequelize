@@ -52,7 +52,8 @@ const Produto = database.define('produto',{ //entidade
             foreignKey: 'idCategoria',
             constraint: true// criar a chave estrangeira CategoriaProduto
         })
-
+        //Super Many-To-Many Relationship
+        //Super muitos pra muitos
         Produto.hasMany(CategoriaProduto, {foreignKey: 'idProduto'})
         CategoriaProduto.belongsTo(Produto, {foreignKey: 'idProduto'})
         Categoria.hasMany(CategoriaProduto, {foreignKey: 'idCategoria'})

@@ -6,15 +6,15 @@
     await database.sync()
     
     //const novoFabricante = await Fabricante.create({
-        //nome: 'Apple'
+    //    nome: 'Samsung'
     //})
 
     
-    const buscaFabricante =  await Fabricante.findByPk(2)
+    const buscaFabricante =  await Fabricante.findByPk(4)
     const novoProduto = await Produto.create({
-            nome: 'Notebook Macbook',
-            preco: 20000,
-            descricao: 'Outro Notebook da Apple',
+            nome: 'Smartphone Samsung Galaxy A03',
+            preco: 799,
+            descricao: 'Celular da Samsung',
             idFabricante: buscaFabricante.id
     })
     console.log(novoProduto)
@@ -24,8 +24,7 @@
     //const deletaProduto = await Produto.findByPk(4)
     //console.log(deletaProduto)
     //await Produto.destroy(deletaProduto)
-    await Produto.destroy({where: {nome: Mackbook}})
-     
+    //await Produto.destroy({where: {nome: Mackbook}})
     
 
 })()

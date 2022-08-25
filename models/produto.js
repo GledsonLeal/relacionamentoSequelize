@@ -27,20 +27,22 @@ const Produto = database.define('produto',{ //entidade
 
 //Exemplo de 1-1: O produto pertence a um fabricante
         Produto.belongsTo(Fabricante,{
-            constraint: true,// garante a integridade referencial, chave estrangeira
+            constraint: true,// garante a integridade referencial, chave estrangeira para ligar produto com fabricante
             foreignKey: 'idFabricante'// nome da chave estrangeira
         })
 //Exemplo de 1-N: um fabricante tem muitos produtos
-        Fabricante.hasMany(Produto, {
+        Fabricante.hasMany(Produto, { //hasMany: ele possui muitos
             foreignKey: 'idFabricante'
         })
+
+
 //Exemplo de N:N muitos pra muitos:
-        Produto.belongsToMany(Categoria, {
+        Produto.belongsToMany(Categoria, {//belongsToMany: pertence a muitos
             //qual outro modelo esse N:M deve ser ajustado
-            through: {
+            through: {//through: através
                 model: CategoriaProduto
             },
-            foreignKey: 'idProduto',
+            foreignKey: 'idProduto',// chave estrangeira
             constraint: true// criar a chave estrangeira CategoriaProduto
         })
         Categoria.belongsToMany(Produto, {
@@ -50,4 +52,9 @@ const Produto = database.define('produto',{ //entidade
             foreignKey: 'idCategoria',
             constraint: true// criar a chave estrangeira CategoriaProduto
         })
+
+        Produto.hasMany(CategoriaProduto, {foreignKey: 'idProduto'})
+        CategoriaProduto.belongsTo(Produto, {foreignKey: 'idProduto'})
+        Categoria.hasMany(CategoriaProduto, {foreignKey: 'idCategoria'})
+        CategoriaProduto.belongsTo(Categoria, {foreignKey: 'idCategoria'})
 module.exports = Produto

@@ -7,7 +7,7 @@
     const Fabricante = require('./models/fabricante')
     await database.sync()// retriar o force: true para não criar novamente
     
-    const fabricante = await Fabricante.findByPk(1, {include: Produto})    
+    const fabricante = await Fabricante.findByPk(4, {include: Produto}) //formato EAGER LOADING   
     console.log(fabricante.produtos)
      
     

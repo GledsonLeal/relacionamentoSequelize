@@ -9,10 +9,10 @@
     await database.sync()// retriar o force: true para não criar novamente
 
     const novaCategoria = await Categoria.create({nome: 'Informatica'})
-    const produto = await Produto.findByPk(1)
+    const produto = await Produto.findByPk(4)
     await produto.setCategoria([novaCategoria])
 
-    const fabricante = await Fabricante.findByPk(1, {include: Produto})    
+    const fabricante = await Fabricante.findByPk(4, {include: Produto})    
     console.log(fabricante.produtos)
      
     

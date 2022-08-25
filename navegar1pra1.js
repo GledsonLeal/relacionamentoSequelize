@@ -16,7 +16,8 @@
     
     const produto1 = await Produto.findByPk(1, {include: Fabricante})//formato EAGER LOADING
                                                                      // o fabricante já vem com o produto
-    console.log(produto1.fabricante.nome)
+    console.log(`################ formato EAGER LOADING: o fabricante já vem com o produto:
+                                    ${produto1.fabricante.nome}`)
     
     //await Produto.destroy({where: {preco: 500}})
      
